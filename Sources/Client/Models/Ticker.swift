@@ -25,25 +25,13 @@ public struct Ticker: Equatable, CodableModel, CoinType {
     
     /// Coin position in Coinpaprika ranking
     public let rank: Int
-    
-    /// Coins circulating on the market
-    public let circulatingSupply: Decimal
-    
+
     /// Total number of coins
     public let totalSupply: Decimal
     
     /// Maximum number of coins that could exist
     public let maxSupply: Decimal
-    
-    /// Circulating Supply / Max Supply Rate
-    public var circulatingSupplyPercent: Decimal? {
-        guard maxSupply != 0 else {
-            return nil
-        }
         
-        return circulatingSupply/maxSupply
-    }
-    
     /// Beta (β or beta coefficient) of an investment indicates whether the investment is more or less volatile than the market as a whole.
     /// - β < 0 Asset movement is in the opposite direction of the total crypto market
     /// - β = 0 Asset movement is uncorrelated to the total crypto market
@@ -62,7 +50,6 @@ public struct Ticker: Equatable, CodableModel, CoinType {
         case name
         case symbol
         case rank
-        case circulatingSupply = "circulating_supply"
         case totalSupply = "total_supply"
         case maxSupply = "max_supply"
         case betaValue = "beta_value"
